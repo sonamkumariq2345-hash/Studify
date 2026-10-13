@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-academic-background text-academic-text font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-academic-heading;
+  }
+  
+  /* h1 base — can be overridden with explicit classes in coloured headers */
+  h1 {
+    @apply text-3xl font-bold tracking-tight mb-6;
+  }
+  
+  h2 {
+    @apply text-2xl font-bold tracking-tight mb-4;
+  }
+  
+  h3 {
+    @apply text-xl font-bold tracking-tight mb-3;
+  }
+  
+  p {
+    @apply leading-relaxed mb-4 text-academic-text;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-semibold transition-colors border rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-1;
+  }
+  
+  .btn-primary {
+    @apply bg-academic-primary text-white border-academic-primary hover:bg-academic-primary-light focus:ring-academic-primary;
+  }
+  
+  .btn-secondary {
+    @apply bg-academic-surface text-academic-text border-academic-border hover:bg-gray-50 focus:ring-academic-border;
+  }
+
+  .btn-danger {
+    @apply bg-white text-academic-error border-academic-error hover:bg-red-50 focus:ring-academic-error;
+  }
+
+  /* Structural Cards */
+  .card {
+    @apply bg-academic-surface rounded-sm border border-academic-border overflow-hidden shadow-none;
+  }
+  
+  .card-header {
+    @apply px-5 py-4 border-b border-academic-border bg-academic-surface;
+  }
+  
+  .card-body {
+    @apply p-5;
+  }
+  
+  /* Feature Upgrades (Animations & Color) */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .card-accent {
+    @apply border-t-4 border-t-academic-primary;
+  }
+
+  
+  /* Tables */
+  .table-container {
+    @apply w-full overflow-x-auto rounded-sm border border-academic-border shadow-none bg-academic-surface;
+  }
+  
+  .data-table {
+    @apply w-full text-left border-collapse;
+  }
+  
+  .data-table th {
+    @apply px-4 py-3 bg-[#FBFBFA] text-xs font-bold text-academic-heading uppercase tracking-wider border-b-2 border-academic-border;
+  }
+  
+  .data-table td {
+    @apply px-4 py-3 whitespace-nowrap text-sm text-academic-text border-b border-academic-border;
+  }
+  
+  .data-table tr:hover td {
+    @apply bg-gray-50/50;
+  }
+  
+  .data-table tr:last-child td {
+    @apply border-b-0;
+  }
+  
+  /* Forms */
+  .form-group {
+    @apply mb-4;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-academic-heading mb-1;
+  }
+  
+  .form-input {
+    @apply block w-full rounded-sm border border-academic-border bg-white px-3 py-2 text-sm text-academic-text shadow-none focus:border-academic-primary focus:outline-none focus:ring-1 focus:ring-academic-primary;
+  }
+
+  /* ─── Status Indicators ────────────────────────────────────────────────────
+     Replaces all rounded-full bg-*-100 pills.
+     A plain 6×6 square dot + text label. No background fill. No pill shape.
+  ─────────────────────────────────────────────────────────────────────────── */
+  .status-active {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold text-academic-heading;
+  }
+  .status-active::before {
+    content: '';
+    @apply inline-block w-1.5 h-1.5 bg-academic-accent flex-shrink-0;
+  }
+
+  .status-inactive {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold text-academic-muted;
+  }
+  .status-inactive::before {
+    content: '';
+    @apply inline-block w-1.5 h-1.5 border border-academic-muted flex-shrink-0;
+  }
+
+  /* Generic badge for enrollment statuses (not_started, in_progress, completed) */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-academic-muted;
+  }
+  .status-badge::before {
+    content: '';
+    @apply inline-block w-1.5 h-1.5 bg-academic-border flex-shrink-0;
+  }
+
+  /* ─── Progress Bar ─────────────────────────────────────────────────────────
+     4px height, square corners (no rounded-full). 
+     Semantic fill classes for three states.
+  ─────────────────────────────────────────────────────────────────────────── */
+  .progress-track {
+    @apply w-full bg-academic-border overflow-hidden;
+    height: 4px;
+    border-radius: 0;
+  }
+
+  .progress-fill {
+    @apply h-full bg-academic-primary transition-all duration-300;
+    border-radius: 0;
+  }
+
+  .progress-fill-warning {
+    @apply h-full bg-academic-accent transition-all duration-300;
+    border-radius: 0;
+  }
+
+  .progress-fill-danger {
+    @apply h-full bg-academic-error transition-all duration-300;
+    border-radius: 0;
+  }
+}
